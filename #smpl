@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+contract SimpleStorage{
+    uint favoriteNumber;
+    function store(uint _favoriteNumber) public {
+       favoriteNumber = _favoriteNumber; //updating the state of blockchain
+    }
+    function retrieve() public view returns (uint) {
+        return favoriteNumber; //viewing/retrieving the state of blockchain, it doesnt modify it
+        //view funtion disallow updating state while pure function disallow even readingfrom state or storage  which means you're not even accessing any data in the app
+        // This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as pure
+        // Note: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.
+
+    }
+    struct mansoord{
+        uint age;
+        string name;
+    }
+    mansoord[] public me;
+    function addperson(string memory _name, uint _age) public {
+    mansoord memory my = mansoord (_age, _name);
+    me.push(my);
+    }
+
+    // or
+    // me.push(mansoord(_age,_name));
+    // }
+    }
